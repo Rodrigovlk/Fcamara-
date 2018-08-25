@@ -1,0 +1,40 @@
+
+package fcamara;
+
+/* 
+* 22/08/2018
+* Rodrigo Vieira Lopes
+* Questão :
+* 
+* 1) Um funcionário de uma empresa recebe, anualmente, aumento salarial.
+* Sabe-se que:
+* Esse funcionário foi contratado em 2005 com salário inicial de R$ 1.000,00;
+* Em 2006 ele recebeu aumento de 1,5% sobre seu salário inicial; e
+* A partir de 2007, os aumentos salariais sempre corresponderam ao dobro
+* do percentual do ano anterior.
+* Faça um algoritmo que determine o salário atual deste funcionário.
+*/
+
+public class Fcamara {
+
+
+    public static void main(String[] args) {
+        
+        int ano_inicial, ano_atual;
+        double salario_inicial, pctdeaumento, salario_att;
+        
+        salario_inicial = 1.000;
+        salario_att = salario_inicial;
+        pctdeaumento = 1.5;
+        ano_atual = 2018;
+
+        for (ano_inicial = 2006; ano_inicial <= ano_atual; ano_inicial++)
+        {
+        salario_att = salario_att + ((salario_inicial * pctdeaumento) / 100); 
+        pctdeaumento = pctdeaumento * 2;  
+        }
+        
+        System.out.println("O salario atual do funcionario é : " + salario_att);
+        
+    }
+}

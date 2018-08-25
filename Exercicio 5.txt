@@ -1,0 +1,131 @@
+
+import java.util.Scanner;
+
+public class Caixa {
+
+
+    public static void main(String[] args){
+        
+        String nome_correntista;
+        double Saldo;
+        int n_conta;
+        int x = 0;
+        
+        
+        Scanner entrada = new Scanner(System.in);
+        ++x;
+        
+        Saldo = 0;
+        n_conta = 1 + x;
+        
+        System.out.print("Digite seu nome : ");
+        nome_correntista = entrada.nextLine();
+
+        Conta minhaConta = new Conta(nome_correntista, n_conta, Saldo);
+        minhaConta.iniciar();
+    }
+}
+
+
+
+
+
+import java.util.Scanner;
+import java.io.Console;
+
+public class Conta {
+    
+    
+    private String nome_correntista;
+    private int n_conta;
+    private int saques;
+    private double saldo;
+    Scanner entrada = new Scanner(System.in);
+
+    public Conta(String nome, int conta, double saldo_inicial){
+        nome_correntista=nome;
+        n_conta=conta;
+        saldo=saldo_inicial;
+    }
+
+    public void iniciar(){
+        int opcao;
+
+        do{
+        System.out.println("Boa tarde : " + nome_correntista + 
+                "\nDigite a opção desejada");
+        System.out.println("1 - Sacar");
+        System.out.println("2 - Depositar");
+        System.out.println("3 - Informaçoes da conta");
+        System.out.println("4 - Sair do progama");
+        
+            opcao = entrada.nextInt();
+            escolheOpcao(opcao);
+            
+        }while(opcao!=4);
+    }
+
+
+    public void escolheOpcao(int opcao){
+        double valor;
+
+        switch( opcao ){
+            case 1:  System.out.print("\nQuanto deseja sacar: ");
+                        try{
+                        valor = entrada.nextDouble();
+                        } catch (Exception e) {
+                            valor = 0;
+                        }
+                        sacar(valor);
+                    break;
+
+            case 2:
+                    System.out.print("\nQuanto deseja depositar: ");
+                    valor = entrada.nextDouble();
+                    depositar(valor);
+                    break;
+            case 3:
+                    informaçoes();
+                    break;
+            case 4: 
+                    System.out.println("\nTurn Off");
+                    break;
+
+            default:
+                    System.out.println("\nOpção inválida");
+        }
+    }
+    
+     public void depositar(double valor)
+    {
+            saldo += valor;
+            System.out.println("\nDepositado : " + valor);
+            System.out.println("Saldo atual : " + saldo + "\n");
+            PressEnter();
+    }
+     
+       public void sacar(double valor){
+        if(saldo >= valor){
+            saldo -= valor;
+            System.out.println("\nRetirado : " + valor);
+            System.out.println("Saldo atual : " + saldo + "\n");
+            PressEnter();
+        } else {
+            System.out.println("\nSem saldo.\n");
+            PressEnter();
+        }
+    }
+        public void informaçoes(){
+            System.out.println("\nNome : " + nome_correntista);
+            System.out.println("Numero da conta : " + n_conta);
+            System.out.println("Saldo da conta : " + saldo + "\n");
+            PressEnter();
+
+}
+        public void PressEnter(){
+            Scanner s=new Scanner(System.in);
+            System.out.println("Press enter to continue.....");
+            s.nextLine();
+        }
+}
+

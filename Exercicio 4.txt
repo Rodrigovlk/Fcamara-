@@ -1,0 +1,45 @@
+/*
+* 22/08/2018
+* Rodrigo Vieira Lopes
+* Questão :
+*
+4) Faça um programa para uma loja de tintas. O programa deverá pedir o
+tamanho em metros quadrados da área a ser pintada. Considere que a
+cobertura da tinta é de 1 litro para cada 3 metros quadrados e que a tinta é
+vendida em latas de 18 litros, que custam R$ 80,00. Informe ao usuário a
+quantidades de latas de tinta a serem compradas e o preço total.
+ */
+package fcamara;
+
+import java.util.Scanner;
+
+public class Fcamara4 {
+   public static void main(String[] args) {
+       float TMQ, latat, tamanho_lata;
+       int Q_latas = 0, preco, PT;
+       Scanner entrada = new Scanner(System.in);
+        
+        Q_latas = 0;
+        tamanho_lata = 0;
+        preco = 80;
+        PT = 0;
+        
+       System.out.print("Tamanho em metros quadrados : ");
+       try {
+           TMQ = entrada.nextInt();
+       } catch(Exception e) {
+           TMQ = 0;
+       }
+       
+       do 
+       {
+           Q_latas++;
+           tamanho_lata = (18 * 3) * Q_latas;
+       } while (tamanho_lata <= TMQ );
+       
+       PT =  Q_latas * preco;
+       
+       System.out.println("Quantidade de Latas : " + Q_latas +
+                "\nO preço total ficou " + PT);
+   }
+}

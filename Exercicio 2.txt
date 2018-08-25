@@ -1,0 +1,76 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * 22/08/2018
+ * @author Rodrigo Vieira Lopes
+ * Questão :
+ * 
+ * 2) Elabore um algoritmo para mostrar os números primos existentes em um intervalo.
+O usuário deverá fornecer os valores inicial (inicial > 0) e final (inicial < final) e os números primos existentes no intervalo ([inicial, final]) devem ser separados por um espaço em branco
+Exemplo:
+Entrada: 2 13
+Saída: 2 3 5 
+ */
+
+
+
+public class Fcamara2 {
+     public static void main(String[] args) {
+        
+        int n_final, n_inicial, verificador, cnt, cnt2, contador;
+         
+        verificador = 0;
+        contador = 0;
+         
+        System.out.print("Entre com numero inicial : ");
+        try
+        {
+            BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+            n_inicial = Integer.parseInt(br.readLine());            
+        }
+        catch(IOException | NumberFormatException e)
+        {
+            n_inicial = 0;
+        }
+        
+        System.out.print("Entre com numero primo final : ");
+        try
+        {
+            BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+            n_final = Integer.parseInt(br.readLine());            
+        }
+        catch(IOException | NumberFormatException e)
+        {
+            n_final = 0;
+        }
+         
+        int np[] = new int[n_final];
+          
+        for (cnt = n_inicial; cnt <= n_final; cnt++)
+        {
+            for (cnt2 = 1; cnt2 <= cnt; cnt2++)
+            {
+                if (cnt % cnt2 == 0)
+                    ++verificador;
+            }
+            
+            if(verificador == 2)
+            {
+                ++contador;
+                np[contador] = cnt;      
+            }
+            
+            verificador = 0;
+        }
+        
+        for (cnt = 1; cnt <= contador; cnt++)
+        {
+             System.out.println(np[cnt]);
+        }
+    
+    }
+    
+    
+}
